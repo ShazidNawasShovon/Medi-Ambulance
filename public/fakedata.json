@@ -1,0 +1,54 @@
+[
+    {
+        "key": "SNS01",
+        "category": "MANAGED TRANSPORTATION",
+        "name": "MANAGED TRANSPORTATION",
+        "img": "https://ambulanceusa.com/wp-content/uploads/2021/02/Managed-Transportation-2-e1578935329512.jpg",
+        "img1": "https://ambulanceusa.com/wp-content/uploads/2021/07/Ambulance-USA-Managed-Transportation-Services.jpg",
+        "details": "We organize medical transportation management services for air ambulance companies, private companies, and the public for private pay. We also provide these services to health plans, healthcare facilities, and government entities for out of pocket costs.",
+        "fullDetails": "At Ambulance USA, we provide non-emergency medical transportation management services to air ambulance companies, private companies, and the public for private pay. We also offer these services to health plans, healthcare facilities, and government entities for out of pocket costs.  Ambulance USA provides easy access to safe, convenient transportation via ground ambulance, wheelchair van, ambulatory vehicles, and public transportation. These options offer cost-effective solutions that are both reliable, responsive, and available for scheduling online or through a single call."
+    },
+    {
+        "key": "SNS02",
+        "category": "EMS CONSULTING",
+        "name": "EMS CONSULTING",
+        "name1": "EMS CONSULTING",
+        "img": "https://ambulanceusa.com/wp-content/uploads/2021/04/EMS-Consulting-Ambulance-USA.jpg",
+        "img1": "https://ambulanceusa.com/wp-content/uploads/2021/08/Ambulance-USA-Bariatric-Patient-Transfer.jpg",
+        "details": "Ambulance USA LLC offers consulting services associated with domestic and international medical transportation as well as for medical repatriations and support with international hospital admissions.",
+        "fullDetails": "The Care of a patient begins with the right care at the right time and having the patient arrive safely.Ambulance USA LLC offers consulting services associated with domestic and international EMS transportation as well as for medical repatriations.  This service includes the procurement of hospital beds, obtaining air and ground transportation quotes, coordinating international medical repatriations, as well as managing all the necessary details while providing communication to everyone involved.We pay strict attention to detail and make all the arrangements required for the patient’s transfer so that our clients will have peace of mind. Each case is managed to meet the specific medical equipment and personnel needs of the patient and their family."
+    },
+    {
+        "key": "SNS03",
+        "category": "GROUND AMBULANCE",
+        "name": "GROUND AMBULANCE",
+        "img": "https://ambulanceusa.com/wp-content/uploads/2021/03/ALS-Ambulance-Transport-600x348-1.jpg",
+        
+        "details": "Domestic and International Basic Life Support (BLS) and Advanced Life Support (ALS) Ambulance transportation for patients needing continuous monitoring from oxygen and stretcher to Cardiac monitor, IV Infusion Pumps, Intubation, Ventilators, SPO2, and more.",
+        "fullDetails": "Basic Life Support (BLS) includes the provision of basic medically necessary supplies and services with Emergency  Medical Technicians (EMTs). BLS requires knowledge and skills in cardiopulmonary resuscitation (CPR), using automated external defibrillators (AED), providing oxygen therapy, and relieving airway obstructions in patients of all ages.BLS ambulance transports provide necessary pre-hospital, post-hospital, and non-emergency medical care transportation for critical, non-critical, and emergent patients not requiring cardiac monitoring. EMTs have the essential knowledge and skills needed to stabilize and safely transport patients ranging from non-emergency and routine medical transports to life-threatening emergencies. EMTs’ function as part of a comprehensive EMS response system, while under medical oversight. EMTs perform interventions with the necessary equipment typically found on an ambulance. EMTs are an essential link between the scene of an emergency as well as the health care system."
+    },
+    {
+        "key": "SNS04",
+        "category": "NON-MEDICAL STRETCHER/GURNEY TRANSPORT",
+        "name": "NON-MEDICAL STRETCHER/GURNEY TRANSPORT",
+        "img": "https://ambulanceusa.com/wp-content/uploads/2021/04/Non-Medical-Stretcher-Transport-home.jpg",
+        "details": "Non-Medical Stretcher Van Transportation (SV) for patients that do not need any medical interventions, but are a fall risk or incapable of being safely transported while seated.",
+        "fullDetails": "Non-Medical Stretcher Van Transportation (SV) for patients that do not need any medical interventions, but are a fall risk or incapable of being safely transported while seated."
+    },
+    {
+        "key": "SNS05",
+        "category": "SPECIALTY & CRITICAL CARE TRANSPORT",
+        "name": "SPECIALTY & CRITICAL CARE TRANSPORT",
+        "img": "https://ambulanceusa.com/wp-content/uploads/2021/04/critical-care-trans-home.jpg",
+        "details": "Speciality Care and Critical Care Ambulance transportation (SCT/ CCT) for patients, including neonate, pediatric, bariatric, and extremely critical cases needing specialized medical teams.We cater to discharge patients from hospitals to various destinations such as airports, facilities, other hospitals, dialysis centers, or homes.",
+        "fullDetails": "Speciality Care/ SCT includes the provision of specialized medical teams with essential and critical supplies by specially trained advanced medical professionals as defined by the local state department of health where the transport takes place.Specialty Care or Critical Care Transports offer specialized care for patients who require additional medical expertise, which is outside the scope of practice of a regular trained Paramedic. Specialty Teams can transport neonatal patients as well as pediatric intensive care patients. Other specialized medical personnel includes Respiratory Therapists, Critical Care Nurses, Critical Care Paramedics, Physicians, Perfusionist, Cardiologist, and more. These specialty care ambulances are essential to ensure that extremely critical patients receive precise care and monitoring from trained medical professionals during their transport."
+    },
+    {
+        "key": "SNS06",
+        "category": "WHEELCHAIR VAN TRANSPORT",
+        "name": "WHEELCHAIR VAN TRANSPORT",
+        "img": "https://ambulanceusa.com/wp-content/uploads/2021/04/Wheelchair-Van-Trasnsport-home.jpg",
+        "details": "Wheelchair Van Transportation for Patients that do not need any medical interventions; they have complete control of their body and can be securely seated without any risk of falling.",
+        "fullDetails":"Wheelchair Van Transport is ideal for stable patients who can safely sit for extended periods. Patients that do not need any medical interventions, have complete control of their body and can be securely seated without any risk of falling.The Wheelchair Van Transport is operated by a team member who has specialized training to assist mobility-challenged individuals. We coordinate every precaution to ensure that they are safely boarded and un-boarded from the vehicle."
+    }
+]
