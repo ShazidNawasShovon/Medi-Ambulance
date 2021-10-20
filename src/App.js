@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import NotFound from "./components/NotFound/NotFound";
-import CreateAccount from "./components/Register/CreateAccount";
+
 import Login from "./components/Login/Login";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import AuthProvider from "./Context/AuthProvider";
@@ -49,9 +49,6 @@ function App() {
             </Route>
             <Route path="/login">
               <Login></Login>
-            </Route>
-            <Route path="/signup">
-              <CreateAccount></CreateAccount>
             </Route>
             <Route path="/resetPassword">
               <ResetPassword></ResetPassword>
