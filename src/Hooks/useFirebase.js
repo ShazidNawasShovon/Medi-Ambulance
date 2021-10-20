@@ -4,15 +4,11 @@ import {
   signOut,
   GoogleAuthProvider,
   onAuthStateChanged,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   updateProfile,
   signInWithPopup,
-  sendEmailVerification,
   sendPasswordResetEmail,
 } from "firebase/auth";
 import initializeFirebase from "../Firebase/firebase.init";
-import { useHistory, useLocation } from "react-router";
 
 // call back  InitializeFirebase
 initializeFirebase();
@@ -22,19 +18,15 @@ const useFirebase = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
-  // const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
-
+  const [isLoading, setIsLoading] = useState(true);
+  // Google Sign IN or Sign Up
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
   const signInWithGoogle = () => {
     return signInWithPopup(auth, googleProvider);
   };
-  // const googleProvider = new GoogleAuthProvider();
-  // const signUsingGoogle = () => {
-  //   return signInWithPopup(auth, googleProvider);
-  // };
-
   const logOut = () => {
     signOut(auth)
       .then(() => {
@@ -43,74 +35,60 @@ const useFirebase = () => {
       })
       .catch((error) => {
         // An error happened.
+        setError(error.message);
       });
   };
+
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        //setting the user
         setUser(user);
       } else {
-        // User is signed out
+        //user is not signed in
       }
+      setIsLoading(false);
     });
+    return unsubscribe;
   }, [auth]);
 
   // Login Or Sign Up Using Email & Pass
-
+  // Handle all input Filed funtion
   const handlePassword = (event) => {
     setPass(event.target.value);
   };
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
-
-  // Registration Section
-
-  const handleRegister = (event) => {
-    event.preventDefault();
-    if (pass.length < 6) {
-      setError("Password Must be 6 character long");
-      return;
-    }
-    registerNewUser(email, pass);
+  const handleName = (event) => {
+    setName(event.target.value);
   };
-  const handleLogin = (email, pass) => {
-    return signInWithEmailAndPassword(auth, email, pass);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const toggleLogin = (event) => {
+    setIsLogin(!event.target.checked);
   };
 
-  const registerNewUser = (email, pass) => {
-    createUserWithEmailAndPassword(auth, email, pass)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-
-        setUserName();
-        setError("");
-
-        console.log(user);
-      })
-      .catch((err) => {
-        const errorMessage = err.message;
-        setError(errorMessage);
-      });
-    console.log(email, pass);
-  };
   // Now We can set User Name
-  const setUserName = () => {
+  const setUserName = (userCredential) => {
+    setIsLoading(true);
     updateProfile(auth.currentUser, {
       displayName: name,
     })
       .then(() => {
         // Profile updated!
-        // ...
+        console.log("heloo", userCredential.user);
+        setUser(userCredential.user);
       })
       .catch((error) => {
         // An error occurred
         // ...
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
-  // Reset PassWord
-
   // Verify Email
 
   // Reset Password
@@ -122,24 +100,27 @@ const useFirebase = () => {
         setError(errorMessage);
       });
   };
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
+
   return {
     user,
     signInWithGoogle,
     logOut,
     handlePassword,
     handleEmail,
-    handleRegister,
-    handleLogin,
     handleNameChange,
     handleResetPassword,
     setError,
     setUser,
+    handleName,
+    setUserName,
+    setIsLoading,
+    toggleLogin,
+    isLogin,
+    isLoading,
     error,
     email,
     pass,
+    name,
   };
 };
 

@@ -1,27 +1,36 @@
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "@firebase/auth";
 import React from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import useFirebase from "../../Hooks/useFirebase";
+
 const Login = () => {
   const {
     handlePassword,
     handleEmail,
-    handleLogin,
     handleResetPassword,
     signInWithGoogle,
+    handleNameChange,
+    toggleLogin,
+    isLogin,
+    setUserName,
     setError,
     setUser,
     error,
     email,
     pass,
-    user,
   } = useAuth();
 
+  const auth = getAuth();
   const location = useLocation();
   const history = useHistory();
   const redirect_url = location.state?.from || "/home";
-  const handleGoogleLogin = () => {
+  // Handle Google Sign in or sign up
+  const handleGoogleSignUp = () => {
     signInWithGoogle()
       .then((result) => {
         setUser(result.user);
@@ -33,9 +42,19 @@ const Login = () => {
         setError(errorMessage);
       });
   };
-  const handleEmailPassLogin = (event) => {
+
+  // Registration or Login  Section
+
+  const handleRegister = (event) => {
     event.preventDefault();
-    handleLogin(email, pass)
+    if (pass.length < 6) {
+      setError("Password Must be 6 character long");
+      return;
+    }
+    isLogin ? handleLogin(email, pass) : registerNewUser(email, pass);
+  };
+  const handleLogin = (email, pass) => {
+    signInWithEmailAndPassword(auth, email, pass)
       .then((result) => {
         setError("");
         history.push(redirect_url);
@@ -45,7 +64,21 @@ const Login = () => {
         setError(errorMessage);
       });
   };
+  // Signed up with Email & Pass
+  const registerNewUser = (email, pass) => {
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        setError("");
+        setUserName(userCredential);
+        history.push(redirect_url);
+      })
+      .catch((err) => {
+        const errorMessage = err.message;
+        setError(errorMessage);
+      });
 
+    console.log(email, pass);
+  };
   return (
     <Container>
       <Row>
@@ -54,8 +87,19 @@ const Login = () => {
           md={4}
           className="mx-auto border border-3 p-5 m-5 rounded rounded-3"
         >
-          <h3>Login</h3>
-          <Form onSubmit={handleEmailPassLogin} className="w-xs-100">
+          <h3>{isLogin ? "Login" : "Create New Account"}</h3>
+          <Form onSubmit={handleRegister} className="w-xs-100">
+            {!isLogin && (
+              <Row>
+                <Col>
+                  <Form.Control
+                    onBlur={handleNameChange}
+                    placeholder="Full Name"
+                    required
+                  />
+                </Col>
+              </Row>
+            )}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -84,30 +128,35 @@ const Login = () => {
                 <li>{error}</li>
               </ul>
             }
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember Me" />
-            </Form.Group>
-            <Button
-              variant="outline-success"
-              type="submit"
-              onClick={handleEmailPassLogin}
-            >
-              Login
+
+            <Button variant="outline-success" type="submit">
+              {isLogin ? "Login" : "Sign Up"}
             </Button>
           </Form>
-          <p className="mt-2">
-            New to Medi-Ambulance ? <Link to="/signup">Create New Account</Link>
-          </p>
-          <p>
-            <Link to="/resetPassword" onClick={handleResetPassword}>
-              Forget Password ?
-            </Link>
-          </p>
+          <Form.Group className="my-3" controlId="formBasicCheckbox">
+            <Form.Check
+              onChange={toggleLogin}
+              type="checkbox"
+              label={
+                isLogin
+                  ? "New to Medi-Ambulance ?"
+                  : "Already Have an Account ?"
+              }
+            />
+          </Form.Group>
+
+          {isLogin && (
+            <p>
+              <Link to="/resetPassword" onClick={handleResetPassword}>
+                Forget Password ?
+              </Link>
+            </p>
+          )}
           <div className="container mt-5 mx-auto text-center">
             ----------OR----------
             <br />
             <Button
-              onClick={handleGoogleLogin}
+              onClick={handleGoogleSignUp}
               variant="outline-dark"
               type="submit"
             >

@@ -55,7 +55,7 @@ const Header = () => {
               {user.email && (
                 <span className="ms-3 my-auto text-white">
                   Sign in as:
-                  <span className="fw-bold"> {user.displayName}</span>
+                  <span className="fw-bold"> {user?.displayName}</span>
                 </span>
               )}
 
@@ -70,10 +70,7 @@ const Header = () => {
               ) : (
                 <>
                   <Nav.Link as={Link} to="/login">
-                    Login
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/signup">
-                    Sign Up
+                    Login / Sign Up
                   </Nav.Link>
                 </>
               )}
